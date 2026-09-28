@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "State-Space Unlearning for Non-Stationary Bias in Land Surface Forecasting"
+abstract: >-
+  SSU-LSF is a machine-unlearning framework for Mamba-family structured state space
+  models used in land surface forecasting. It localizes a temporal confounding
+  footprint from EKFac influence scores, then applies Hessian-free projected
+  gradient ascent inside a KL-divergence trust region with spatial total-variation
+  regularization, removing non-stationary bias at a fraction of the cost of full
+  retraining.
+type: conference-paper
+version: 1.0.0
+license: MIT
+authors:
+  - family-names: Pal
+    given-names: Anidipta
+    affiliation: "Heritage Institute of Technology, Kolkata, India"
+    email: anidiptapal@gmail.com
+conference:
+  name: "NeurIPS 2026 Workshop on GlobalSouthAI"
+repository-code: "https://github.com/YOUR_USERNAME/ssu_lsf"
+keywords:
+  - machine unlearning
+  - structured state space models
+  - land surface forecasting
+  - NDVI
+  - total variation regularization
