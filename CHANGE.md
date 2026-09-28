@@ -42,8 +42,9 @@ with the configuration it came from.
   ablation figures of the paper verbatim; the measurements of this code listed separately, with an
   explicit statement of the one claim the configuration does not reproduce (the CRR ordering between
   SSU-LSF and GR).
-- `index.html` — same structure on the project page; the pipeline-figure placeholder is gone and the
-  code button points at the repository.
+- `index.html` — same structure on the project page; the pipeline-figure placeholder is gone, the header
+  carries exactly three links (paper PDF, repository, citation jump), and the remaining prose names
+  files in `code` text instead of linking them.
 - `docs/METHOD.md` — metric definitions of Appendix G.5, the `[t_e+1, T_test]` window identity, the
   TCI reading note, the Proposition 1 values (ρ_max = 0.91, L_enc ≈ 18.3, δ_KL = 0.05, μ̂_ref ≈ 0.21,
   ≈10.2 K, loose by ≈200×) and the δ_KL/warm-start sensitivity.

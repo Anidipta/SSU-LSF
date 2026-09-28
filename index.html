@@ -32,13 +32,9 @@
   <p class="motto">Forget the anomaly. Keep the climate.</p>
   <p class="auth">Anidipta Pal · Heritage Institute of Technology, Kolkata<br>NeurIPS 2026 Workshop GlobalSouthAI</p>
   <div class="btns">
-    <a class="btn" href="https://github.com/Anidipta/SSU-LSF">🐙 Code</a>
     <a class="btn" href="SSU_LSF_Global_South_AI%20(2).pdf">📄 Paper (PDF)</a>
-    <a class="btn" href="docs/METHOD.md">🧩 Method</a>
-    <a class="btn" href="docs/REPRODUCE.md">🔁 Reproduce</a>
-    <a class="btn" href="docs/VERIFICATION.md">✅ Verification</a>
-    <a class="btn" href="CHANGE.md">📝 Change log</a>
-    <a class="btn" href="#cite">📚 Citation</a>
+    <a class="btn" href="https://github.com/Anidipta/SSU-LSF">🐙 Code</a>
+    <a class="btn" href="#cite">📚 Cite</a>
   </div>
 </div></header>
 
@@ -96,7 +92,7 @@ CropHarvest gives Sp-R, SCS, F1; the last column is GPU-hours per unlearning req
 <p>The commands below print the following two tables on CPU (seed 0). <code>CM</code> = confounded
 model, <code>OR</code> = oracle retrain, <code>GR</code> = gradient reversal. CRR, RMSE, ΔRMSE and SCS
 follow the definitions of Appendix G.5; TCI is the reading of <code>1 − σ<sub>ŷ</sub>/σ<sub>y</sub></code>
-documented in <a href="docs/METHOD.md">docs/METHOD.md</a>.</p>
+documented in <code>docs/METHOD.md</code>.</p>
 <p><b>Reference configuration</b> — <code>python run_experiments.py</code> (64 locations, 120 monthly
 steps, ~3.5 min, ρ_max = 0.919 against the paper's 0.91, footprint of 25 steps):</p>
 <table>
@@ -118,8 +114,8 @@ accepted steps (CRR 0.569 at ΔRMSE 4.8%, unchanged at 45–90 epochs), while th
 reaches 0.655 at 15 epochs and 0.947 at 30 epochs with 81% clean-domain damage. The archive here is
 synthetic, the backbone is a compact selective diagonal SSM rather than the 47.3M Mamba
 encoder-decoder, and the curvature is a damped diagonal rather than EKFac, so these tables are a
-mechanism-level check of the pipeline; <a href="docs/REPRODUCE.md">docs/REPRODUCE.md</a> lists the
-paper-scale settings and <a href="docs/VERIFICATION.md">docs/VERIFICATION.md</a> the full comparison.</p>
+mechanism-level check of the pipeline; the paper-scale protocol is in <code>docs/REPRODUCE.md</code> and
+the full comparison in <code>docs/VERIFICATION.md</code>.</p>
 </section>
 
 <section><h2>Quick start</h2>
@@ -136,14 +132,10 @@ pytest -q                            # smoke test</pre>
   booktitle = {NeurIPS 2026 Workshop on GlobalSouthAI},
   year      = {2026}
 }</pre>
-<p>Machine-readable metadata: <a href="CITATION.cff">CITATION.cff</a>. Source and issue tracker:
-<a href="https://github.com/Anidipta/SSU-LSF">github.com/Anidipta/SSU-LSF</a>. Release history:
-<a href="CHANGE.md">CHANGE.md</a>.</p>
+<p>Machine-readable metadata: <code>CITATION.cff</code>. Release history: <code>CHANGE.md</code>.</p>
 </section>
 </div>
-<footer>© 2026 Anidipta Pal · MIT License ·
-<a href="https://github.com/Anidipta/SSU-LSF">github.com/Anidipta/SSU-LSF</a> ·
-see CITATION.cff</footer>
+<footer>© 2026 Anidipta Pal · MIT License · see CITATION.cff</footer>
 </body>
 </html>
 
