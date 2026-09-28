@@ -9,8 +9,9 @@ abstract: >-
   regularization, removing non-stationary bias at a fraction of the cost of full
   retraining.
 type: conference-paper
-version: 1.0.0
+version: 1.1.0
 license: MIT
+repository-code: "https://github.com/Anidipta/SSU-LSF"
 authors:
   - family-names: Pal
     given-names: Anidipta
@@ -18,7 +19,6 @@ authors:
     email: anidiptapal@gmail.com
 conference:
   name: "NeurIPS 2026 Workshop on GlobalSouthAI"
-repository-code: "https://github.com/YOUR_USERNAME/ssu_lsf"
 keywords:
   - machine unlearning
   - structured state space models

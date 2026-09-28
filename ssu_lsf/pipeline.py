@@ -7,7 +7,7 @@ from .data import make_archive, affected_mask, inject_labels, train_weights, gri
 from .model import DiagSSM, fit
 from .influence import fisher_diag, step_scores, footprint
 from .unlearn import ssu_lsf
-from .metrics import test_mask, rmse, crr, scs, tci
+from .metrics import eval_mask, rmse, crr, scs, tci
 
 
 def set_seed(s): random.seed(s); np.random.seed(s); torch.manual_seed(s)  # reproducibility
@@ -38,12 +38,13 @@ def run(cfg, verbose=True):
     log("[4/5] SSU-LSF unlearning"); ssu, hist = ssu_lsf(cm, X, Yc, aff, steps, w_clean, adj, cfg)
     log("[5/5] gradient reversal baseline (GR)")
     gr, _ = ssu_lsf(cm, X, Yc, aff, np.arange(cfg.ts, cfg.te + 1), w_clean, adj, replace(cfg, beta=0.0), use_kl=False, use_tv=False)
-    ta, tu = test_mask(cfg, aff), test_mask(cfg, ~aff); res = {}
+    ta, tu = eval_mask(cfg, aff), eval_mask(cfg, ~aff); res = {}
     for name, m in [("CM", cm), ("OR", orc), ("GR", gr), ("SSU-LSF", ssu)]:
         with torch.no_grad(): mu, _ = m(X)
         res[name] = dict(rmse_aff=rmse(mu, Y, ta), rmse_clean=rmse(mu, Y, tu), scs=scs(mu, adj, cfg), tci=tci(mu, Y, ta | tu))
     r_cm, r_or, c_or = res["CM"]["rmse_aff"], res["OR"]["rmse_aff"], res["OR"]["rmse_clean"]
     for v in res.values(): v["crr"] = crr(v["rmse_aff"], r_cm, r_or); v["d_rmse_pct"] = 100 * (v["rmse_clean"] / c_or - 1)
     res["_meta"] = dict(rho_max=rho, tail_ext=ext, footprint=[int(s) for s in steps], ul_epochs_run=len(hist),
-                        accepted_steps=sum(h is not None for h in hist))
+                        accepted_steps=sum(h is not None for h in hist),
+                        confound_gap_pct=100 * (r_cm / max(r_or, 1e-12) - 1))  # bias retained by CM vs OR
     return res
